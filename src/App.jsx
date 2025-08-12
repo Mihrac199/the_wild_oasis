@@ -18,7 +18,7 @@ const queryClient = new QueryClient({
 
   defaultOptions: {
 
-    queries: 60 * 1000
+    queries: 0
 
   }
 

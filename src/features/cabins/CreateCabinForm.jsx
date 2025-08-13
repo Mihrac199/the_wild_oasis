@@ -1,3 +1,9 @@
+import { useForm } from "react-hook-form"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import toast from "react-hot-toast"
+
+import { createCabin } from "../../services/apiCabins"
+
 import styled from "styled-components"
 
 import Input from "../../ui/Input"
@@ -44,33 +50,61 @@ const Error = styled.span`
 
 export default function CreateCabinForm() {
 
+  const { register, handleSubmit, reset } = useForm();
+
+  const queryClient = useQueryClient();
+
+  const { mutate, isLoading: isCreating } = useMutation({
+
+    mutationFn: createCabin,
+
+    onSuccess: () => {
+      toast.success("New Cabin Successfully Created");
+
+      queryClient.invalidateQueries({
+        queryKey: ["cabin"]
+      });
+
+      reset();
+
+    },
+
+    onError: err => toast.error(err.message)
+
+  })
+
+
+  function onSubmit(data) {
+    mutate(data);
+  }
+
   return (
 
-    <Form>
+    <Form onSubmit={handleSubmit(onSubmit)}>
 
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
-        <Input type="text" id="name" />
+        <Input type="text" id="name" {...register("name")} />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="maxCapacity">Maximum capacity</Label>
-        <Input type="number" id="maxCapacity" />
+        <Input type="number" id="maxCapacity" {...register("maxCapacity")} />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="regularPrice">Regular price</Label>
-        <Input type="number" id="regularPrice" />
+        <Input type="number" id="regularPrice" {...register("regularPrice")} />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="discount">Discount</Label>
-        <Input type="number" id="discount" defaultValue={0} />
+        <Input type="number" id="discount" defaultValue={0} {...register("discount")} />
       </FormRow>
 
       <FormRow>
         <Label htmlFor="description">Description for website</Label>
-        <Textarea type="number" id="description" defaultValue="" />
+        <Textarea type="number" id="description" defaultValue="" {...register("description")} />
       </FormRow>
 
       <FormRow>
@@ -79,12 +113,11 @@ export default function CreateCabinForm() {
       </FormRow>
 
       <FormRow>
-        {/* type is an HTML attribute! */}
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
 
-        <Button>Edit cabin</Button>
+        <Button disabled={isCreating}>Add Cabin</Button>
       </FormRow>
 
     </Form>

@@ -1,19 +1,19 @@
-import styled from "styled-components";
-import { format, isToday } from "date-fns";
+import styled from "styled-components"
+import { format, isToday } from "date-fns"
 import {
   HiOutlineChatBubbleBottomCenterText,
   HiOutlineCheckCircle,
   HiOutlineCurrencyDollar,
   HiOutlineHomeModern,
-} from "react-icons/hi2";
+} from "react-icons/hi2"
 
-import DataItem from "../../ui/DataItem";
-import { Flag } from "../../ui/Flag";
+import DataItem from "../../ui/DataItem"
+import { Flag } from "../../ui/Flag"
 
-import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers"
 
 const StyledBookingDataBox = styled.section`
-  /* Box */
+
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
@@ -101,8 +101,8 @@ const Footer = styled.footer`
   text-align: right;
 `;
 
-// A purely presentational component
-function BookingDataBox({ booking }) {
+export default function BookingDataBox({ booking }) {
+
   const {
     created_at,
     startDate,
@@ -120,8 +120,11 @@ function BookingDataBox({ booking }) {
   } = booking;
 
   return (
+
     <StyledBookingDataBox>
+
       <Header>
+
         <div>
           <HiOutlineHomeModern />
           <p>
@@ -136,9 +139,11 @@ function BookingDataBox({ booking }) {
             : formatDistanceFromNow(startDate)}
           ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
         </p>
+
       </Header>
 
       <Section>
+
         <Guest>
           {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
           <p>
@@ -150,20 +155,22 @@ function BookingDataBox({ booking }) {
           <p>National ID {nationalID}</p>
         </Guest>
 
-        {observations && (
-          <DataItem
-            icon={<HiOutlineChatBubbleBottomCenterText />}
-            label="Observations"
-          >
-            {observations}
-          </DataItem>
-        )}
+        {
+          observations && (
+            <DataItem
+              icon={<HiOutlineChatBubbleBottomCenterText />}
+              label="Observations"
+            >
+              {observations}
+            </DataItem>
+          )}
 
         <DataItem icon={<HiOutlineCheckCircle />} label="Breakfast included?">
           {hasBreakfast ? "Yes" : "No"}
         </DataItem>
 
         <Price isPaid={isPaid}>
+
           <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
             {formatCurrency(totalPrice)}
 
@@ -174,14 +181,17 @@ function BookingDataBox({ booking }) {
           </DataItem>
 
           <p>{isPaid ? "Paid" : "Will pay at property"}</p>
+
         </Price>
+
       </Section>
 
       <Footer>
         <p>Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}</p>
       </Footer>
-    </StyledBookingDataBox>
-  );
-}
 
-export default BookingDataBox;
+    </StyledBookingDataBox>
+
+  )
+
+}

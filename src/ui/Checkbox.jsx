@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const StyledCheckbox = styled.div`
   display: flex;
@@ -25,9 +25,12 @@ const StyledCheckbox = styled.div`
   }
 `;
 
-function Checkbox({ checked, onChange, disabled = false, id, children }) {
+export default function Checkbox({ checked, onChange, disabled = false, id, children }) {
+
   return (
+
     <StyledCheckbox>
+
       <input
         type="checkbox"
         id={id}
@@ -35,9 +38,11 @@ function Checkbox({ checked, onChange, disabled = false, id, children }) {
         onChange={onChange}
         disabled={disabled}
       />
-      <label htmlFor={!disabled ? id : ""}>{children}</label>
-    </StyledCheckbox>
-  );
-}
 
-export default Checkbox;
+      <label htmlFor={!disabled ? id : ""}>{children}</label>
+
+    </StyledCheckbox>
+
+  )
+
+}

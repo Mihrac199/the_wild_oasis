@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const StyledFormRow = styled.div`
   display: flex;
@@ -16,14 +16,16 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-function FormRowVertical({ label, error, children }) {
+export default function FormRowVertical({ label, error, children }) {
+
   return (
+
     <StyledFormRow>
       {label && <Label htmlFor={children.props.id}>{label}</Label>}
       {children}
       {error && <Error>{error}</Error>}
     </StyledFormRow>
-  );
-}
 
-export default FormRowVertical;
+  )
+
+}

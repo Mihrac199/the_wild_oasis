@@ -1,9 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { subDays } from "date-fns";
-import { useSearchParams } from "react-router-dom";
-import { getStaysAfterDate } from "../../services/apiBookings";
+import { useQuery } from "@tanstack/react-query"
+import { subDays } from "date-fns"
+import { useSearchParams } from "react-router-dom"
+import { getStaysAfterDate } from "../../services/apiBookings"
 
-export function useRecentStays() {
+export default function useRecentStays() {
+
   const [searchParams] = useSearchParams();
 
   const numDays = !searchParams.get("last")
@@ -21,4 +22,5 @@ export function useRecentStays() {
   );
 
   return { isLoading, stays, confirmedStays, numDays };
+
 }

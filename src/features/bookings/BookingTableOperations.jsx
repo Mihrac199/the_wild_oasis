@@ -1,10 +1,13 @@
-import SortBy from "../../ui/SortBy";
-import Filter from "../../ui/Filter";
-import TableOperations from "../../ui/TableOperations";
+import SortBy from "../../ui/SortBy"
+import Filter from "../../ui/Filter"
+import TableOperations from "../../ui/TableOperations"
 
-function BookingTableOperations() {
+export default function BookingTableOperations() {
+
   return (
+
     <TableOperations>
+
       <Filter
         filterField="status"
         options={[
@@ -26,8 +29,9 @@ function BookingTableOperations() {
           { value: "totalPrice-asc", label: "Sort by amount (low first)" },
         ]}
       />
-    </TableOperations>
-  );
-}
 
-export default BookingTableOperations;
+    </TableOperations>
+
+  )
+
+}

@@ -1,11 +1,12 @@
-import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
-import Input from "../../ui/Input";
-import Spinner from "../../ui/Spinner";
-import { useSettings } from "./useSettings";
-import { useUpdateSetting } from "./useUpdateSetting";
+import Form from "../../ui/Form"
+import FormRow from "../../ui/FormRow"
+import Input from "../../ui/Input"
+import Spinner from "../../ui/Spinner"
+import { useSettings } from "./useSettings"
+import { useUpdateSetting } from "./useUpdateSetting"
 
-function UpdateSettingsForm() {
+export default function UpdateSettingsForm() {
+
   const {
     isLoading,
     settings: {
@@ -15,9 +16,10 @@ function UpdateSettingsForm() {
       breakfastPrice,
     } = {},
   } = useSettings();
+
   const { isUpdating, updateSetting } = useUpdateSetting();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <Spinner />
 
   function handleUpdate(e, field) {
     const { value } = e.target;
@@ -27,7 +29,9 @@ function UpdateSettingsForm() {
   }
 
   return (
+
     <Form>
+
       <FormRow label="Minimum nights/booking">
         <Input
           type="number"
@@ -67,8 +71,9 @@ function UpdateSettingsForm() {
           onBlur={(e) => handleUpdate(e, "breakfastPrice")}
         />
       </FormRow>
-    </Form>
-  );
-}
 
-export default UpdateSettingsForm;
+    </Form>
+
+  )
+
+}

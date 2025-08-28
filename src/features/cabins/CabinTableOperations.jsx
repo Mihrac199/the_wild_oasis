@@ -1,10 +1,13 @@
-import TableOperations from "../../ui/TableOperations";
-import Filter from "../../ui/Filter";
-import SortBy from "../../ui/SortBy";
+import TableOperations from "../../ui/TableOperations"
+import Filter from "../../ui/Filter"
+import SortBy from "../../ui/SortBy"
 
-function CabinTableOperations() {
+export default function CabinTableOperations() {
+
   return (
+
     <TableOperations>
+
       <Filter
         filterField="discount"
         options={[
@@ -24,8 +27,9 @@ function CabinTableOperations() {
           { value: "maxCapacity-desc", label: "Sort by capacity (high first)" },
         ]}
       />
-    </TableOperations>
-  );
-}
 
-export default CabinTableOperations;
+    </TableOperations>
+
+  )
+
+}

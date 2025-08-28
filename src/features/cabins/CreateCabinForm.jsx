@@ -1,16 +1,17 @@
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"
 
-import Input from "../../ui/Input";
-import Form from "../../ui/Form";
-import Button from "../../ui/Button";
-import FileInput from "../../ui/FileInput";
-import Textarea from "../../ui/Textarea";
-import FormRow from "../../ui/FormRow";
+import Input from "../../ui/Input"
+import Form from "../../ui/Form"
+import Button from "../../ui/Button"
+import FileInput from "../../ui/FileInput"
+import Textarea from "../../ui/Textarea"
+import FormRow from "../../ui/FormRow"
 
-import { useCreateCabin } from "./useCreateCabin";
-import { useEditCabin } from "./useEditCabin";
+import { useCreateCabin } from "./useCreateCabin"
+import { useEditCabin } from "./useEditCabin"
 
-function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
+export default function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
+
   const { isCreating, createCabin } = useCreateCabin();
   const { isEditing, editCabin } = useEditCabin();
   const isWorking = isCreating || isEditing;
@@ -21,6 +22,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { register, handleSubmit, reset, getValues, formState } = useForm({
     defaultValues: isEditSession ? editValues : {},
   });
+
   const { errors } = formState;
 
   function onSubmit(data) {
@@ -49,14 +51,16 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   }
 
   function onError(errors) {
-    // console.log(errors);
+    console.log(errors);
   }
 
   return (
+
     <Form
       onSubmit={handleSubmit(onSubmit, onError)}
       type={onCloseModal ? "modal" : "regular"}
     >
+
       <FormRow label="Cabin name" error={errors?.name?.message}>
         <Input
           type="text"
@@ -139,7 +143,6 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
       </FormRow>
 
       <FormRow>
-        {/* type is an HTML attribute! */}
         <Button
           variation="secondary"
           type="reset"
@@ -151,8 +154,9 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
           {isEditSession ? "Edit cabin" : "Create new cabin"}
         </Button>
       </FormRow>
-    </Form>
-  );
-}
 
-export default CreateCabinForm;
+    </Form>
+
+  )
+
+}

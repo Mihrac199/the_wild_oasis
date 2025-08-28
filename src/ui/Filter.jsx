@@ -1,5 +1,5 @@
-import { useSearchParams } from "react-router-dom";
-import styled, { css } from "styled-components";
+import { useSearchParams } from "react-router-dom"
+import styled, { css } from "styled-components"
 
 const StyledFilter = styled.div`
   border: 1px solid var(--color-grey-100);
@@ -25,7 +25,6 @@ const FilterButton = styled.button`
   border-radius: var(--border-radius-sm);
   font-weight: 500;
   font-size: 1.4rem;
-  /* To give the same height as select */
   padding: 0.44rem 0.8rem;
   transition: all 0.3s;
 
@@ -35,7 +34,8 @@ const FilterButton = styled.button`
   }
 `;
 
-function Filter({ filterField, options }) {
+export default function Filter({ filterField, options }) {
+
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options.at(0).value;
 
@@ -47,6 +47,7 @@ function Filter({ filterField, options }) {
   }
 
   return (
+
     <StyledFilter>
       {options.map((option) => (
         <FilterButton
@@ -59,7 +60,7 @@ function Filter({ filterField, options }) {
         </FilterButton>
       ))}
     </StyledFilter>
-  );
-}
 
-export default Filter;
+  )
+
+}

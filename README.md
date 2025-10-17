@@ -7,8 +7,10 @@ Used Technologies;
      2) React
           - Vite React App
      3) Query State
-     4) Toast Library
-     5) Supabase API
+     4) Hook Form
+     5) Toast Library
+     6) Recharts Library
+     7) Supabase API
           - Create
           - Connection
           - Update

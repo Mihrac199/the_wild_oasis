@@ -2,17 +2,18 @@
 
 Used Technologies;
 
-     1) CSS 3
+     1) HTML 5
+     2) CSS 3
           - Styled Components
-     2) React
+     3) React
           - Vite React App
-     3) Query State
-     4) Hook Form
-     5) React Hot Toast Library
-     6) React Recharts Library
-     7) Supabase API
-          - Create
+     4) Query State
+     5) Hook Form
+     6) Hot Toast Library
+     7) Recharts Library
+     8) Supabase API
           - Connection
+          - İnsert
           - Update
           - Delete
           - Auth
